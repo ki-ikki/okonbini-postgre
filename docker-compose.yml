@@ -1,0 +1,22 @@
+services:
+  okonbini-postgre:
+    image: postgres:17
+    container_name: okonbini-postgre
+    ports:
+      - 5433:5432
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: 'administrator'
+      POSTGRES_PASSWORD: 'administrator'
+      POSTGRES_DB: 'okonbini_db'
+    networks:
+      - app_net
+
+volumes:
+  db_volume:
+
+networks:
+  app_net:
+    external: true
+
